@@ -23,9 +23,11 @@ const Navbar = () => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
 
+  // 🚀 Added "Blog" to the navigation links
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Products", path: "/products" },
+    { name: "Blog", path: "/blog" }, // 👈 New Option
     { name: "Cart", path: "/cart" },
     { name: "Track Order", path: "/track-order" },
   ];
@@ -54,8 +56,8 @@ const Navbar = () => {
             </h1>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Desktop Navigation - Adjusted spacing for 5 links */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
@@ -87,7 +89,6 @@ const Navbar = () => {
                 </button>
               </div>
             ) : (
-              /* 🚀 ULTRA COMPACT BUTTON FIX: Slim padding (py-2), smaller font (text-[8px]), and tight leading */
               <button 
                 onClick={() => setIsLoginModalOpen(true)}
                 className="px-4 py-2 bg-green-600 text-white font-black text-[8px] md:text-[9px] uppercase tracking-widest rounded-lg hover:bg-white hover:text-black transition-all shadow-lg shadow-green-600/10 active:scale-95 leading-tight flex items-center justify-center min-h-[32px]"

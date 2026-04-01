@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { 
   LayoutGrid, PlusCircle, ShoppingBasket, 
-  Leaf, X, LogOut, IndianRupee, Users 
+  Leaf, X, LogOut, IndianRupee, Users, PenTool 
 } from "lucide-react";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
@@ -10,7 +10,7 @@ import { signOut } from "firebase/auth";
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
 
-  // 🚀 Complete Menu for Orgosaga Elite Management
+  // 🚀 Updated Menu for Orgosaga Elite Management including "Write Diary"
   const menuItems = [
     { name: "Overview", path: "/admin", icon: <LayoutGrid size={20} /> },
     { name: "Add Produce", path: "/admin/add-product", icon: <PlusCircle size={20} /> },
@@ -18,6 +18,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     { name: "Orders", path: "/admin/orders", icon: <ShoppingBasket size={20} /> },
     { name: "Revenue", path: "/admin/revanue", icon: <IndianRupee size={20} /> },
     { name: "Members", path: "/admin/customer", icon: <Users size={20} /> },
+    { name: "Write Diary", path: "/admin/add-blog", icon: <PenTool size={20} /> }, // 👈 New Blog Option
   ];
 
   const handleLogout = async () => {
@@ -32,7 +33,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   return (
     <>
-      {/* 1. Mobile Overlay (Blur effect from Sports site) */}
+      {/* 1. Mobile Overlay */}
       {isOpen && (
         <div 
           className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[150] lg:hidden" 

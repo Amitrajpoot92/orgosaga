@@ -29,7 +29,7 @@ const Footer = () => {
               Orgo<span className="text-green-600">Saga</span>
             </h2>
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest leading-relaxed max-w-[200px]">
-              Bringing the purest essence of nature to your home. Based in Gorakhpur.
+              Bringing the purest essence of nature to your home. Based in Bhopal.
             </p>
             
             {/* 🚀 Social Media */}

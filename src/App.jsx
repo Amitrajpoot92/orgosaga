@@ -15,6 +15,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout"; 
 import TrackOrder from "./pages/TrackOrder";
 import About from "./pages/about"; 
+import Blog from "./pages/Blog"; 
 
 // --- Admin Components & Pages ---
 import AdminLayout from "./admin/AdminLayout";
@@ -23,9 +24,9 @@ import AddProduct from "./admin/pages/AddProduct";
 import AllProducts from "./admin/pages/AllProducts";
 import Orders from "./admin/pages/Orders";
 import AdminLogin from "./admin/pages/Login";
-// 🚀 Naye Pages Import kiye
 import Customers from "./admin/pages/customers"; 
 import Revenue from "./admin/pages/revenue";
+import AddBlog from "./admin/pages/AddBlog"; // 🚀 Fixed Import (Pehle yahan Revenue likha tha)
 
 // Protected Route Component (100% Secured for Admin)
 const ProtectedRoute = ({ children }) => {
@@ -65,10 +66,12 @@ function App() {
                     <Routes>
                       <Route path="/" element={<Home />} />
                       <Route path="/products" element={<Products />} />
+                      <Route path="/blog" element={<Blog />} />
                       <Route path="/cart" element={<Cart />} />
                       <Route path="/checkout" element={<Checkout />} />
                       <Route path="/track-order" element={<TrackOrder />} />
                       <Route path="/about" element={<About />} /> 
+                      <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                   </main>
                   <Footer />
@@ -79,7 +82,7 @@ function App() {
             {/* 2. ADMIN LOGIN ROUTE */}
             <Route path="/admin/login" element={<AdminLogin />} />
 
-            {/* 3. PROTECTED ADMIN PANEL ROUTES (Now Fully Updated) */}
+            {/* 3. PROTECTED ADMIN PANEL ROUTES */}
             <Route 
               path="/admin" 
               element={
@@ -88,20 +91,19 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              {/* Dashboard Index */}
               <Route index element={<Dashboard />} />
-              
-              {/* Product Management */}
               <Route path="add-product" element={<AddProduct />} />
               <Route path="all-products" element={<AllProducts />} />
-              
-              {/* Sales & Orders */}
               <Route path="orders" element={<Orders />} />
-              <Route path="revanue" element={<Revenue />} /> {/* 👈 Naya Navigation Set */}
+              <Route path="revanue" element={<Revenue />} />
+              <Route path="customer" element={<Customers />} />
+              <Route path="add-blog" element={<AddBlog />} /> {/* 👈 Naya Diary/Blog Route */}
               
-              {/* User Management */}
-              <Route path="customer" element={<Customers />} /> {/* 👈 Naya Navigation Set */}
+              <Route path="*" element={<Navigate to="/admin" replace />} />
             </Route>
+
+            {/* 🔄 GLOBAL REDIRECTION */}
+            <Route path="*" element={<Navigate to="/" replace />} />
 
           </Routes>
         </Router>
